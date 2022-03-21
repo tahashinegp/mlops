@@ -1,11 +1,11 @@
-variable "env" {}
+#variable "env" {}
 
 resource "aws_s3_bucket" "test" {
   bucket = "abhitahaa-tf-test-bucket-test"
 
   tags = {
     Name        = "My bucket"
-    Environment = var.env[0]
+    Environment = "Sandbox"
   }
 }
 
