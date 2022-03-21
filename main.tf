@@ -1,7 +1,7 @@
 #variable "env" {}
 
-resource "aws_s3_bucket" "test" {
-  bucket = "abhitahaa-tf-test-buckettest"
+resource "aws_s3_bucket" "testing" {
+  bucket = "abhitahaa-tf-buckettest"
 
   tags = {
     Name        = "My bucket"
@@ -10,13 +10,13 @@ resource "aws_s3_bucket" "test" {
 }
 
 resource "aws_s3_bucket_acl" "example" {
-  bucket = aws_s3_bucket.test.id
+  bucket = aws_s3_bucket.testing.id
   acl    = "private"
 }
 
 resource "aws_s3_bucket_versioning" "versioning_test" {
 
-    bucket = aws_s3_bucket.test.id
+    bucket = aws_s3_bucket.testing.id
     versioning_configuration {
     status = "Disabled"
 
