@@ -1,9 +1,4 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 variable "env" {}
-
 
 resource "aws_s3_bucket" "test" {
   bucket = "abhitahaa-tf-test-bucket-test"
