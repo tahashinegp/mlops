@@ -1,7 +1,7 @@
 #variable "env" {}
 
 resource "aws_s3_bucket" "test" {
-  bucket = "abhitahaa-tf-test-bucket-test"
+  bucket = "abhitahaa-tf-test-buckettest"
 
   tags = {
     Name        = "My bucket"
