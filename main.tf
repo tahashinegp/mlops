@@ -51,3 +51,6 @@ resource "aws_s3_bucket_acl" "example" {
 #source = "myfiles/${each.value}"
 #etag = filemd5("myfiles/${each.value}")
 #}
+
+
+
