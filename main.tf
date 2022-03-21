@@ -27,3 +27,27 @@ resource "aws_s3_bucket_acl" "example" {
   bucket = aws_s3_bucket.test.id
   acl    = "private"
 }
+
+# Upload an object
+#resource "aws_s3_bucket_object" "object" {
+
+ # bucket = aws_s3_bucket.b1.id
+
+  #key    = "profile"
+
+  #acl    = "private"  # or can be "public-read"
+
+  #source = "myfiles/yourfile.txt"
+
+  #etag = filemd5("myfiles/yourfile.txt")
+
+#}
+
+# to upload multiple files
+#resource "aws_s3_bucket_object" "object1" {
+#for_each = fileset("myfiles/", "*")
+#bucket = aws_s3_bucket.b1.id
+#key = each.value
+#source = "myfiles/${each.value}"
+#etag = filemd5("myfiles/${each.value}")
+#}
