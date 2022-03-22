@@ -25,6 +25,7 @@ resource "aws_s3_bucket" "testing" {
 resource "aws_s3_bucket_public_access_block" "testing" {
   bucket = aws_s3_bucket.testing.id
   block_public_policy = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_versioning" "versioning_test" {
