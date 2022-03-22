@@ -40,7 +40,7 @@ resource "aws_s3_bucket_versioning" "versioning_test" {
 
 
 resource "aws_s3_object" "example" {
-  bucket = aws_s3_bucket.versioning_test
+  bucket = aws_s3_bucket.testing.id
   key    = "droeloe"
   source = "example.txt"
 }
