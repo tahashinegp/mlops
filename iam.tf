@@ -34,7 +34,7 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
              "Sid" : "VisualEditor0",
              "Effect" : "Allow",
              "Action" : "s3.GetObject",
-             "Resource" : "arn:aws:S3:::*"
+             "Resource" : "arn:aws:s3:::pocops/*"
          }
      ]
  }
