@@ -1,6 +1,6 @@
 data "archive_file" "zip_the_python_code" {
 type        = "zip"
-source_dir  = "${path.module}/python/test.py"
+source_dir  = "${path.module}/python/*"
 output_path = "${path.module}/python/lambda.zip"
 }
 resource "aws_lambda_function" "terraform_lambda_func" {
