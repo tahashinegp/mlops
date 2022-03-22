@@ -1,11 +1,26 @@
 #variable "env" {}
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+  
+}
+
+
 
 resource "aws_s3_bucket" "testing" {
-  bucket = "abhitahaa-tf-buckettest"
+  bucket = "tahaaabhilamdba"
 
   tags = {
     Name        = "My bucket"
-    Environment = "Sandbox"
+    Environment = "Sandy"
   }
 }
 
