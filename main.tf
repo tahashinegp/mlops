@@ -14,19 +14,17 @@ provider "aws" {
 }
 
 
-
 resource "aws_s3_bucket" "testing" {
-  bucket = "tahaaabhilamdba"
+  bucket = "pocops"
 
   tags = {
-    Name        = "My bucket"
+    Name        = "tstops"
     Environment = "Sandy"
   }
 }
-
-resource "aws_s3_bucket_acl" "example" {
+resource "aws_s3_bucket_public_access_block" "testing" {
   bucket = aws_s3_bucket.testing.id
-  acl    = "private"
+  block_public_policy = true
 }
 
 resource "aws_s3_bucket_versioning" "versioning_test" {
