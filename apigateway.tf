@@ -40,6 +40,7 @@ resource "aws_api_gateway_method" "gettmethod" {
   request_parameters = {
     "method.request.path.proxy" = true
   }
+}
 
 resource "aws_api_gateway_integration" "lambda_test" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
