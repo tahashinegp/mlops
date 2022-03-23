@@ -52,16 +52,24 @@ resource "aws_api_gateway_integration" "lambda_test" {
    
 }
 
-resource "aws_api_gateway_integration" "lambda_gettest" {
+resource "aws_api_gateway_integration" "lambda_posttest" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   resource_id = "${aws_api_gateway_resource.resource.id}"
   http_method = "${aws_api_gateway_method.postmethod.http_method}"
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
+   
+}
+resource "aws_api_gateway_integration" "lambda_gettest" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  resource_id = "${aws_api_gateway_resource.resource.id}"
+  http_method = "${aws_api_gateway_method.gettmethod.http_method}"
   integration_http_method = "GET"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
    
 }
-
 
 
 
