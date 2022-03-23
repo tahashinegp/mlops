@@ -2,6 +2,9 @@
 resource "aws_api_gateway_rest_api" "api" {
  name = "automate-api-gateway"
  description = "Automate next API Gateway"
+ endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 }
 
 
