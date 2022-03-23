@@ -1,7 +1,7 @@
 
-resource “aws_api_gateway_rest_api” “api” {
- name = “automate-api-gateway”
- description = “Proxy to handle requests to our API”
+resource "aws_api_gateway_rest_api" "api" {
+ name = "automate-api-gateway"
+ description = "Automate next API Gateway"
 }
 
 # resource "aws_api_gateway_authorizer" "demo" {
