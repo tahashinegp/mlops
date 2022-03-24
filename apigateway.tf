@@ -11,7 +11,7 @@ resource "aws_api_gateway_rest_api" "api" {
 resource "aws_api_gateway_resource" "proxy" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
-  path_part   = "ProbPred_AN"
+  path_part   = "ProbPred_AN_test"
 }
 # resource "aws_api_gateway_method" "method" {
 #   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
@@ -71,7 +71,7 @@ resource "aws_api_gateway_integration" "lambda_gettest" {
    
 }
 
-resource "aws_api_gateway_deployment" "api" {
+resource "aws_api_gateway_deployment" "api_deployment" {
  depends_on = [
   "aws_api_gateway_integration.lambda_posttest",
   "aws_api_gateway_integration.lambda_gettest"
@@ -88,7 +88,7 @@ resource "aws_api_gateway_deployment" "api" {
   function_name = "{aws_lambda_function.lambda_function.function_name}"
   principal = "apigateway.amazonaws.com"
   
-  source_arn = "$aws_api_gateway_rest_api.automate_next.execution_arn}/*/*"
+  source_arn = "$aws_api_gateway_rest_api.api_deployment.execution_arn}/*/*"
 
  }
 
