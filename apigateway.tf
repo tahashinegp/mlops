@@ -8,7 +8,7 @@ resource "aws_api_gateway_rest_api" "api" {
 }
 
 
-resource "aws_api_gateway_resource" "resource" {
+resource "aws_api_gateway_resource" "proxy" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
   path_part   = "ProbPred_AN"
@@ -24,55 +24,64 @@ resource "aws_api_gateway_resource" "resource" {
 #}
 resource "aws_api_gateway_method" "postmethod" {
   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
-  resource_id   = "${aws_api_gateway_resource.resource.id}"
+  resource_id   = "${aws_api_gateway_resource.proxy.id}"
   http_method   = "POST"
   authorization = "NONE"
-  request_parameters = {
-    "method.request.path.proxy" = true
-  }
+#   request_parameters = {
+#     "method.request.path.proxy" = true
+#   }
  }
 
 resource "aws_api_gateway_method" "gettmethod" {
   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
-  resource_id   = "${aws_api_gateway_resource.resource.id}"
+  resource_id   = "${aws_api_gateway_resource.proxy.id}"
   http_method   = "GET"
   authorization = "NONE"
-  request_parameters = {
-    "method.request.path.proxy" = true
-  }
+#   request_parameters = {
+#     "method.request.path.proxy" = true
+#   }
 }
 
-resource "aws_api_gateway_integration" "lambda_test" {
-  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
-  http_method = "${aws_api_gateway_method.postmethod.http_method}"
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
+# resource "aws_api_gateway_integration" "lambda_test" {
+#   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+#   resource_id = "${aws_api_gateway_resource.resource.id}"
+#   http_method = "${aws_api_gateway_method.postmethod.http_method}"
+#   integration_http_method = "POST"
+#   type                    = "AWS_PROXY"
+#   uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
    
-}
+# }
 
 resource "aws_api_gateway_integration" "lambda_posttest" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
+  resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "${aws_api_gateway_method.postmethod.http_method}"
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
+  uri                     = "${aws_lambda_function.terraform_lambda_func.invoke_arn}"
    
 }
 resource "aws_api_gateway_integration" "lambda_gettest" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
+  resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "${aws_api_gateway_method.gettmethod.http_method}"
   integration_http_method = "GET"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.terraform_lambda_func.invoke_arn
+  uri                     = "${aws_lambda_function.terraform_lambda_func.invoke_arn}"
    
 }
 
-
-
+resource "aws_api_gateway_deployment" "api" {
+ depends_on = [
+  "aws_api_gateway_integration.lambda_posttest",
+  "aws_api_gateway_integration.lambda_gettest"
+  ]
+ 
+ rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  stage_name = "test"
+  
+}
+ 
 
 
 
