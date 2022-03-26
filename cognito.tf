@@ -1,7 +1,7 @@
 resource "aws_cognito_user_pool" "pool" {
   name = "test2"
   auto_verified_attributes = ["email"]
-  password = "Test@123"
+  
   schema {
     name                     = "terraform"
     attribute_data_type      = "Boolean"
@@ -29,6 +29,7 @@ resource "aws_cognito_user" "example" {
     foo            = "bar"
     email          = "abhitahaa@gmail.com"
     email_verified = true
+    password = "Test@123"
   }
 }
 
