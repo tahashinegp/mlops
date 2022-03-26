@@ -1,5 +1,5 @@
 resource "aws_cognito_user_pool" "pool" {
-  name = "test23"
+  name = "test233"
   auto_verified_attributes = ["email"]
   
   schema {
@@ -25,11 +25,19 @@ resource "aws_cognito_user_pool" "pool" {
     required                 = false
     developer_only_attribute = false
   }
+  schema {
+    name                     = "messageaction"
+    attribute_data_type      = "String"
+    mutable                  = false
+    required                 = false
+    developer_only_attribute = false
+    message_action = supress
+  }
 }
 
 resource "aws_cognito_user" "example" {
   user_pool_id = aws_cognito_user_pool.pool.id
-  username     = "abhitahaa23"
+  username     = "abhitahaa233"
 
   attributes = {
     terraform      = true
