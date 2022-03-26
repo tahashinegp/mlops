@@ -40,7 +40,7 @@ resource "aws_cognito_user_pool_client" "client" {
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_flows                  = ["code"]
   supported_identity_providers         = ["COGNITO"]
-  allowed_oauth_scopes                 = ["aws.cognito.signin.user.admin", "openid", "profile", "email"]
+  allowed_oauth_scopes                 = ["openid"]
 
   callback_urls = ["https://example.com"]
 }
