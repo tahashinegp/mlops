@@ -47,7 +47,7 @@ resource "aws_cognito_user_pool_client" "client" {
 
 
 resource "aws_cognito_user_pool_domain" "main" {
-  domain       = "abhitahaa_test"
+  domain       = "abhitahaatest"
   user_pool_id = aws_cognito_user_pool.pool.id
 }
 
