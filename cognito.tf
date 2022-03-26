@@ -31,7 +31,7 @@ resource "aws_cognito_user_pool" "pool" {
     mutable                  = false
     required                 = false
     developer_only_attribute = false
-    message_action = supress
+    message_action = SUPPRESS
   }
 }
 
