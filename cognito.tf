@@ -1,6 +1,6 @@
 resource "aws_cognito_user_pool" "pool" {
-  name = "test"
-
+  name = "test2"
+  auto_verified_attributes = ["email"]
   schema {
     name                     = "terraform"
     attribute_data_type      = "Boolean"
@@ -21,7 +21,7 @@ resource "aws_cognito_user_pool" "pool" {
 
 resource "aws_cognito_user" "example" {
   user_pool_id = aws_cognito_user_pool.pool.id
-  username     = "abhitahaa"
+  username     = "abhitahaa2"
 
   attributes = {
     terraform      = true
@@ -47,7 +47,7 @@ resource "aws_cognito_user_pool_client" "client" {
 
 
 resource "aws_cognito_user_pool_domain" "main" {
-  domain       = "abhitahaa"
+  domain       = "abhitahaa_test"
   user_pool_id = aws_cognito_user_pool.pool.id
 }
 
