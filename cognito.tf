@@ -44,7 +44,7 @@ resource "aws_cognito_user" "example" {
     email          = "abhitahaa@gmail.com"
     email_verified = true
     password = "Test@123"
-    message_action = SUPPRESS
+    message_action = "SUPPRESS"
   }
   
 }
