@@ -52,5 +52,18 @@ resource "aws_cognito_user_pool_domain" "main" {
 }
 
 
+resource "aws_cognito_resource_server" "resource" {
+  identifier = "https://example.com"
+  name       = "example"
 
+  scope {
+    scope_name        = "json.write"
+    scope_description = "write json data"
+   }
+  scope {
+    scope_name        = "json.read"
+    scope_description = "read json data"
+   }
+  user_pool_id = aws_cognito_user_pool.pool.id
+}
 
