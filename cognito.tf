@@ -26,13 +26,12 @@ resource "aws_cognito_user_pool" "pool" {
     developer_only_attribute = false
   }
   schema {
-    name                     = "messageaction"
+    name                     = "message_action"
     attribute_data_type      = "String"
     mutable                  = false
     required                 = false
     developer_only_attribute = false
-    message_action = SUPPRESS
-  }
+   }
 }
 
 resource "aws_cognito_user" "example" {
@@ -45,6 +44,7 @@ resource "aws_cognito_user" "example" {
     email          = "abhitahaa@gmail.com"
     email_verified = true
     password = "Test@123"
+    message_action = SUPPRESS
   }
   
 }
