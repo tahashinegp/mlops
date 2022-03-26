@@ -35,7 +35,7 @@ resource "aws_cognito_user" "example" {
 resource "aws_cognito_user_pool_client" "client" {
   name = "client"
   user_pool_id = "${aws_cognito_user_pool.pool.id}" # the cognito pool id created in step 1
-  generate_secret                      = true
+  generate_secret                      = false
   explicit_auth_flows                  = ["ADMIN_NO_SRP_AUTH", "USER_PASSWORD_AUTH"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_flows                  = ["code","implicit"]
