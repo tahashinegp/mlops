@@ -49,6 +49,14 @@ resource "aws_cognito_user" "example" {
   
 }
 
+resource "null_resource" "example" {
+  provisioner "local-exec" {
+  command = "aws cognito-idp admin-set-user-password \
+  --user-pool-id <aws_cognito_user_pool.pool.id> \
+  --username <abhitahaa233> \
+  --password <"Test@123" \
+  --permanent"
+
 
 resource "aws_cognito_user_pool_client" "client" {
   name = "client"
