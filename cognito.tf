@@ -40,3 +40,9 @@ resource "aws_cognito_user_pool_client" "client" {
   generate_secret     = false
   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 }
+
+
+resource "aws_cognito_user_pool_domain" "main" {
+  domain       = "www.google.com"
+  user_pool_id = aws_cognito_user_pool.pool.id
+}
