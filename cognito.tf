@@ -38,7 +38,7 @@ resource "aws_cognito_user_pool_client" "client" {
   generate_secret                      = true
   explicit_auth_flows                  = ["ADMIN_NO_SRP_AUTH", "USER_PASSWORD_AUTH"]
   allowed_oauth_flows_user_pool_client = true
-  allowed_oauth_flows                  = ["code"]
+  allowed_oauth_flows                  = ["code","implicit grant"]
   supported_identity_providers         = ["COGNITO"]
   allowed_oauth_scopes                 = ["openid"]
 
