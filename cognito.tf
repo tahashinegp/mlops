@@ -1,5 +1,5 @@
 resource "aws_cognito_user_pool" "pool" {
-  name = "test2334"
+  name = "test111"
   auto_verified_attributes = ["email"]
   
   schema {
@@ -36,7 +36,7 @@ resource "aws_cognito_user_pool" "pool" {
 
 resource "aws_cognito_user" "example" {
   user_pool_id = aws_cognito_user_pool.pool.id
-  username     = "abhitahaa2433"
+  username     = "abhitahaa111"
 
   attributes = {
     terraform      = true
@@ -46,7 +46,11 @@ resource "aws_cognito_user" "example" {
     password = "Test@123"
     message_action = "SUPPRESS"
   }
-  
+  lifecycle {
+    ignore_changes = [
+      password_length,
+      password_reset_required
+          ]
 }
 
 # resource "null_resource" "example" {
