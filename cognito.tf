@@ -51,6 +51,7 @@ resource "aws_cognito_user" "example" {
       password_length,
       password_reset_required
           ]
+  }
 }
 
 # resource "null_resource" "example" {
