@@ -46,12 +46,12 @@ resource "aws_cognito_user" "example" {
     password = "Test@123"
     message_action = "SUPPRESS"
   }
-  lifecycle {
-    ignore_changes = [
-      password_length,
-      password_reset_required
-          ]
-  }
+#   lifecycle {
+#     ignore_changes = [
+#       password_length,
+#       password_reset_required
+#           ]
+#   }
 }
 
 # resource "null_resource" "example" {
