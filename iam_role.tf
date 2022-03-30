@@ -1,6 +1,4 @@
 
-### Creating lambda role ###
-
 resource "aws_iam_role" "s3_role" {
 name   = "movess3_Role"
 assume_role_policy = <<EOF
