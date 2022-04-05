@@ -73,8 +73,8 @@ resource "aws_api_gateway_integration" "lambda_gettest" {
 
 resource "aws_api_gateway_deployment" "api_deployment" {
  depends_on = [
-  "aws_api_gateway_integration.lambda_posttest",
-  "aws_api_gateway_integration.lambda_gettest"
+  aws_api_gateway_integration.lambda_posttest,
+  aws_api_gateway_integration.lambda_gettest
   ]
  
  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
