@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" "s3_role" {
-name   = "movess3_Role"
+name   = "test_movess3_Role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
