@@ -44,7 +44,7 @@ resource "aws_iam_policy" "iam_policy_for_s3" {
  EOF
 }
 ### Attach IAM Policy to IAM Role ###
-resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role_test" {
  role        = aws_iam_role.s3_role.name
  policy_arn  = aws_iam_policy.iam_policy_for_s3.arn
 }
